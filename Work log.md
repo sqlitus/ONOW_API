@@ -1,6 +1,8 @@
 # Hist log
 
-## Table Priorities
+Working notes as API connection is established.
+
+## Table Priorities for Connections
 - incident
 - prob / change
 - request
@@ -109,3 +111,14 @@ https://community.servicenow.com/community?id=community_question&sys_id=f27d6c80
 
 * run code execute vs script - diff work dir *
 ---
+
+### 2/12/2020 - continue addressing missing dot-walk fields
+fields selected:
+
+    sysparm_fields = "&sysparm_fields=" + "u_amazon_go_location,category,u_what_is_impacted.link,u_what_is_impacted.value,opened_by.link,opened_by.value,sys_domain.link,sys_domain.value,caller_id.link,caller_id.value,assignment_group.link,assignment_group.value,company.link,company.value,u_affected_user.link,u_affected_user.value,location.link,location.value,assignment_group.name,assignment_group.value,u_affected_user.name"
+
+only 4 returned:
+
+    u_affected_user.name	category	assignment_group.name	u_amazon_go_location
+
+found [Table API FAQs](https://hi.service-now.com/kb_view.do?sysparm_article=KB0534905)

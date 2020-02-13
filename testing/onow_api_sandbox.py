@@ -44,7 +44,7 @@ nrows = 129; record_limit = str(nrows)
 noffset = 0; offset = str(noffset)
 api_calls = 1
 sysparm_query = "&sysparm_query=priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')^assignment_group.nameLIKEretail"
-sysparm_fields = "&sysparm_fields=" + "promoted_by,u_incident_owner,parent,u_vendor_name,caused_by,watch_list,upon_reject,sys_updated_on,u_reported_by_manager,x_lomei_logmein_re_logmein_session_counter,approval_history,skills,number,proposed_by,lessons_learned,x_pd_integration_incident,state,sys_created_by,knowledge,order,u_business_function,u_assigned_timestamp,cmdb_ci,delivery_plan,u_application_classification,u_caller_number,u_client_reference_number,impact,u_requested_for,active,u_created_analyst_s_assignment_group,work_notes_list,priority,sys_domain_path,x_lomei_logmein_re_logmein_session_id,business_duration,group_list,approval_set,major_incident_state,u_resolved_on_first_call_eligible,x_lomei_logmein_re_logmein_closing_time,short_description,correlation_display,delivery_task,work_start,trigger_rule,additional_assignee_list,u_limited_visibility,notify,sys_class_name,closed_by,follow_up,parent_incident,u_incident_owner_group,reopened_by,u_mim_details,reassignment_count,x_pd_integration_incident_key,assigned_to,sla_due,comments_and_work_notes,u_assigned_time_elapsed,u_first_assignment_group,u_amazon_go_region,u_group_change_counter,escalation,upon_approval,correlation_id,timeline,made_sla,promoted_on,u_major_incident,child_incidents,hold_reason,resolved_by,sys_updated_by,u_resolved_on_first_call,user_input,sys_created_on,u_msp_touched,proposed_on,actions_taken,x_pd_integration_notes_ids,calendar_stc,closed_at,u_vendor_reference_number,x_86994_opsgenie_alert_alias,business_service,business_impact,rfc,time_worked,expected_start,opened_at,u_reported_by_name,x_86994_opsgenie_opsgenie_alert_id,work_end,reopened_time,resolved_at,x_lomei_logmein_re_logmein_pickup_time,subcategory,work_notes,u_unknown_name,close_code,u_incident_user_reference,x_lomei_logmein_re_logmein_work_time,business_stc,cause,description,calendar_duration,close_notes,u_manila_touched,sys_id,contact_type,incident_state,urgency,problem_id,activity_due,severity,overview,comments,approval,due_date,sys_mod_count,reopen_count,sys_tags,u_ticket_complexity,u_amazon_go_location,category,u_what_is_impacted.link,u_what_is_impacted.value,opened_by.link,opened_by.value,sys_domain.link,sys_domain.value,caller_id.link,caller_id.value,assignment_group.link,assignment_group.value,company.link,company.value,u_affected_user.link,u_affected_user.value,location.link,location.value,assignment_group.name,assignment_group.value,u_affected_user.name"
+sysparm_fields = "&sysparm_fields=" + "assignment_group"
 url = f'https://wfmsandbox.service-now.com/api/now/table/incident?sysparm_limit={nrows}&sysparm_offset={offset}' + \
       sysparm_query + \
       sysparm_fields
@@ -72,7 +72,9 @@ data = response.json()  # print(data)
 
 # Convert JSON to Dataframe. Data contained in dictionaries within dictionary, within single value dictionary
 df = pd.DataFrame.from_dict(json_normalize(data["result"]), orient='columns')
-output_msg = f'RECORD LIMIT: {record_limit}. DATA RETURNED: {df.shape[0]}. MISSING: {int(record_limit)-df.shape[0]} rows. COLUMNS: {df.shape[1]}'
+output_msg = f'ROW LIMIT: {record_limit}. COLUMNS QUERIED: {len(sysparm_fields.split(","))}. ' \
+             f'ROWS RETURNED: {df.shape[0]}. COLUMNS RETURNED: {df.shape[1]} ' \
+             f'MISSING: {int(record_limit)-df.shape[0]} rows. {len(sysparm_fields.split(","))-df.shape[1]} columns.'
 print(output_msg)
 
 # log

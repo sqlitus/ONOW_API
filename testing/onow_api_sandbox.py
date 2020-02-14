@@ -10,16 +10,10 @@ Access given by HS
 Created:
 12/19/2019
 
-Updates:
-get request times out inconsistently. 10k row limit
-
-Reference:
-https://docs.servicenow.com/bundle/madrid-application-development/page/integrate/inbound-rest/concept/c_RESTAPIExplorer.html
-
 Note:
 data contained in denormalized dict value within root dict -- converted to pd dataframe
 noticing many values are ENUM IDs - not human readable -- dot-walk for names.
-using v1 tables  - need to test w/ latest -- latest works, declare explicit last version for vc
+using current (v2) tables
 
 '''
 

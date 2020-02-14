@@ -6,6 +6,7 @@ Purpose: Reference for establishing ONOW connection to SNOW API.
 - [Explore the REST API for a table](https://docs.servicenow.com/bundle/madrid-application-development/page/integrate/inbound-rest/task/explore-rest-api-for-table.html)
 - [ODBC driver](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/odbc-driver/concept/c_ODBCDriver.html)
 - [Table API FAQs](https://hi.service-now.com/kb_view.do?sysparm_article=KB0534905) 
+- [existing python/snow package](https://community.servicenow.com/community?id=community_question&sys_id=63864b25db1cdbc01dcaf3231f961945)
 
 ### Environment
 Pycharm. Python 3.8+. Windows 10.

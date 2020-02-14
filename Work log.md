@@ -122,3 +122,42 @@ only 4 returned:
     u_affected_user.name	category	assignment_group.name	u_amazon_go_location
 
 found [Table API FAQs](https://hi.service-now.com/kb_view.do?sysparm_article=KB0534905)
+
+> answer: select base field for like & value, then field.name for display. 
+> returns all 3 correctly:
+
+    sysparm_fields = "&sysparm_fields=" + "assignment_group,assignment_group.name"
+
+assignment_group.name | assignment_group.link	| assignment_group.value
+--- | --- | ---
+Retail Support	| (url with id)	| (id)
+Retail Support L2 |	(url with id) |	(id)
+
+testing now with all 177 cols seen, plus additional root names + dotwalk fields
+177 cols:
+    
+    promoted_by,u_incident_owner,parent,u_vendor_name,caused_by,watch_list,upon_reject,sys_updated_on,u_reported_by_manager,x_lomei_logmein_re_logmein_session_counter,approval_history,skills,number,proposed_by,lessons_learned,x_pd_integration_incident,state,sys_created_by,knowledge,order,u_business_function,u_assigned_timestamp,delivery_plan,u_application_classification,u_caller_number,u_client_reference_number,impact,u_requested_for,active,u_created_analyst_s_assignment_group,work_notes_list,priority,sys_domain_path,x_lomei_logmein_re_logmein_session_id,business_duration,group_list,approval_set,major_incident_state,u_resolved_on_first_call_eligible,x_lomei_logmein_re_logmein_closing_time,short_description,correlation_display,delivery_task,work_start,trigger_rule,additional_assignee_list,u_limited_visibility,notify,sys_class_name,closed_by,follow_up,parent_incident,u_incident_owner_group,reopened_by,u_mim_details,u_what_is_impacted,reassignment_count,x_pd_integration_incident_key,sla_due,comments_and_work_notes,u_assigned_time_elapsed,u_first_assignment_group,u_amazon_go_region,u_group_change_counter,escalation,upon_approval,correlation_id,timeline,made_sla,promoted_on,u_major_incident,child_incidents,hold_reason,resolved_by,sys_updated_by,u_resolved_on_first_call,user_input,sys_created_on,u_msp_touched,proposed_on,actions_taken,x_pd_integration_notes_ids,calendar_stc,closed_at,u_vendor_reference_number,x_86994_opsgenie_alert_alias,business_impact,rfc,time_worked,expected_start,opened_at,u_reported_by_name,x_86994_opsgenie_opsgenie_alert_id,work_end,reopened_time,resolved_at,x_lomei_logmein_re_logmein_pickup_time,subcategory,work_notes,u_unknown_name,close_code,u_incident_user_reference,x_lomei_logmein_re_logmein_work_time,business_stc,cause,description,calendar_duration,close_notes,u_manila_touched,sys_id,contact_type,incident_state,urgency,problem_id,activity_due,severity,overview,comments,approval,due_date,sys_mod_count,u_affected_user,reopen_count,sys_tags,u_ticket_complexity,u_amazon_go_location,location,category,cmdb_ci.link,cmdb_ci.value,assigned_to.link,assigned_to.value,opened_by.link,opened_by.value,sys_domain.link,sys_domain.value,business_service.link,business_service.value,caller_id.link,caller_id.value,assignment_group.link,assignment_group.value,company.link,company.value,assigned_to,parent_incident.link,parent_incident.value,cmdb_ci,business_service,assignment_group,delivery_plan.link,delivery_plan.value,delivery_task.link,delivery_task.value,trigger_rule.link,trigger_rule.value,opened_by,caller_id,company,u_business_function.link,u_business_function.value,closed_by.link,closed_by.value,u_what_is_impacted.link,u_what_is_impacted.value,resolved_by.link,resolved_by.value,u_affected_user.link,u_affected_user.value,location.link,location.value,rfc.link,rfc.value,parent.link,parent.value,problem_id.link,problem_id.value
+    
+extra:
+
+    assignment_group,assignment_group.name,
+    x_pd_integration_incident_key,x_pd_integration_incident_key.name,
+    -- priority,priority.name,priority.value,
+    problem_id,problem_id.name,
+    u_what_is_impacted,u_what_is_impacted.name
+    
+running default query, grabbing col list, removing .link + .value fields, then running, adding extra.
+144 base fields:
+
+    "promoted_by,u_incident_owner,parent,u_vendor_name,caused_by,watch_list,upon_reject,sys_updated_on,u_reported_by_manager,x_lomei_logmein_re_logmein_session_counter,approval_history,skills,number,proposed_by,lessons_learned,x_pd_integration_incident,state,sys_created_by,knowledge,order,u_business_function,u_assigned_timestamp,delivery_plan,u_application_classification,u_caller_number,u_client_reference_number,impact,u_requested_for,active,u_created_analyst_s_assignment_group,work_notes_list,priority,sys_domain_path,x_lomei_logmein_re_logmein_session_id,business_duration,group_list,approval_set,major_incident_state,u_resolved_on_first_call_eligible,x_lomei_logmein_re_logmein_closing_time,short_description,correlation_display,delivery_task,work_start,trigger_rule,additional_assignee_list,u_limited_visibility,notify,sys_class_name,closed_by,follow_up,parent_incident,u_incident_owner_group,reopened_by,u_mim_details,u_what_is_impacted,reassignment_count,x_pd_integration_incident_key,sla_due,comments_and_work_notes,u_assigned_time_elapsed,u_first_assignment_group,u_amazon_go_region,u_group_change_counter,escalation,upon_approval,correlation_id,timeline,made_sla,promoted_on,u_major_incident,child_incidents,hold_reason,resolved_by,sys_updated_by,u_resolved_on_first_call,user_input,sys_created_on,u_msp_touched,proposed_on,actions_taken,x_pd_integration_notes_ids,calendar_stc,closed_at,u_vendor_reference_number,x_86994_opsgenie_alert_alias,business_impact,rfc,time_worked,expected_start,opened_at,u_reported_by_name,x_86994_opsgenie_opsgenie_alert_id,work_end,reopened_time,resolved_at,x_lomei_logmein_re_logmein_pickup_time,subcategory,work_notes,u_unknown_name,close_code,u_incident_user_reference,x_lomei_logmein_re_logmein_work_time,business_stc,cause,description,calendar_duration,close_notes,u_manila_touched,sys_id,contact_type,incident_state,urgency,problem_id,activity_due,severity,overview,comments,approval,due_date,sys_mod_count,u_affected_user,reopen_count,sys_tags,u_ticket_complexity,u_amazon_go_location,location,category,cmdb_ci,cmdb_ci,assigned_to,assigned_to,opened_by,opened_by,sys_domain,sys_domain,business_service,business_service,caller_id,caller_id,assignment_group,assignment_group,company,company,assigned_to,parent_incident,parent_incident,cmdb_ci,business_service,assignment_group,delivery_plan,delivery_plan,delivery_task,delivery_task,trigger_rule,trigger_rule,opened_by,caller_id,company,u_business_function,u_business_function,closed_by,closed_by,u_what_is_impacted,u_what_is_impacted,resolved_by,resolved_by,u_affected_user,u_affected_user,location,location,rfc,rfc,parent,parent,problem_id,problem_id"
+    
+> correctly added 1 field per root+name pair
+> .name or .number or whatever applies to field
+
+Reference for display: `https://stackoverflow.com/questions/36634879/retrieving-text-state-from-servicenow-rest-api/36655809#36655809`
+
+Solution:
+sysparm_display_value "all" param returns both. likely don't need dot-walk specified fields.
+test no sys_fields, display all.
+> display value, value, and link returned when applicable.
+>

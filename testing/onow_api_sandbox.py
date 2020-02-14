@@ -23,10 +23,9 @@ using v1 tables  - need to test w/ latest -- latest works, declare explicit last
 
 '''
 
-#Need to install requests package for python
+
 import requests
 import pandas as pd
-from pandas.io.json import json_normalize
 import os
 import config
 import definitions
@@ -44,10 +43,12 @@ nrows = 129; record_limit = str(nrows)
 noffset = 0; offset = str(noffset)
 api_calls = 1
 sysparm_query = "&sysparm_query=priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')^assignment_group.nameLIKEretail"
-sysparm_fields = "&sysparm_fields=" + "assignment_group"
+sysparm_fields = "&sysparm_fields=" + "assignment_group,problem_id,number,location,location.lattitude,location.longitude"
+sysparm_display_value = "&sysparm_display_value=" + "all"
 url = f'https://wfmsandbox.service-now.com/api/now/table/incident?sysparm_limit={nrows}&sysparm_offset={offset}' + \
       sysparm_query + \
-      sysparm_fields
+      sysparm_fields + \
+      sysparm_display_value
 
 user = config.sandbox['user']
 pwd = config.sandbox['pwd']
@@ -71,7 +72,7 @@ print('BEGINNING OF JSON FILE:', response.text[:80], 'END OF JSON FILE:', respon
 data = response.json()  # print(data)
 
 # Convert JSON to Dataframe. Data contained in dictionaries within dictionary, within single value dictionary
-df = pd.DataFrame.from_dict(json_normalize(data["result"]), orient='columns')
+df = pd.DataFrame.from_dict(pd.json_normalize(data["result"]), orient='columns')
 output_msg = f'ROW LIMIT: {record_limit}. COLUMNS QUERIED: {len(sysparm_fields.split(","))}. ' \
              f'ROWS RETURNED: {df.shape[0]}. COLUMNS RETURNED: {df.shape[1]} ' \
              f'MISSING: {int(record_limit)-df.shape[0]} rows. {len(sysparm_fields.split(","))-df.shape[1]} columns.'
@@ -85,6 +86,6 @@ logging.debug(output_msg + f'\nsysparm_query = {sysparm_query}' + f'\nsysparm_fi
 
 # Save data to CSV in relative path
 output_incident = os.path.abspath(os.path.join(definitions.ROOT_DIR, f'.\\test data\\onow-api-data_incident_sysparm_limit{record_limit}_offset{offset}_calls{api_calls}_rows{df.shape[0]}_cols{df.shape[1]}'
-                                f'_runtime{benchmark.elapsed_total}.csv'))
+                                f'_runtime{benchmark.elapsed_total}_time{datetime.now().strftime("%H%M%S")}.csv'))
 df.to_csv(output_incident, index=False)
 benchmark.elapsed(f'FINISHED EXPORT TO {output_incident}', end='yes')

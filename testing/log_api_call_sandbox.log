@@ -123,3 +123,15 @@ DEBUG:root:ROW LIMIT: 129. COLUMNS QUERIED: 6. ROWS RETURNED: 2. COLUMNS RETURNE
 sysparm_query = &sysparm_query=priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')^assignment_group.nameLIKEretail
 sysparm_fields = &sysparm_fields=assignment_group,problem_id,number,location,location.lattitude,location.longitude
 
+DEBUG:root:Call at 2020-02-17 13:42:19
+DEBUG:root:ROW LIMIT: 10000. COLUMNS QUERIED: 4. ROWS RETURNED: 10000. COLUMNS RETURNED: 11 MISSING: 0 rows. -7 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=assignment_group,problem_id,number,location
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): wfmsandbox.service-now.com:443
+DEBUG:urllib3.connectionpool:https://wfmsandbox.service-now.com:443 "GET /api/now/table/incident?sysparm_limit=10000&sysparm_offset=0&sysparm_querypriorityIN2,3,4%5Esys_created_on%3E=javascript:gs.dateGenerate('2020-01-01','00:00:00')&sysparm_fields=assignment_group,problem_id,number,location&sysparm_display_value=all HTTP/1.1" 200 None
+DEBUG:root:Call at 2020-02-17 15:20:28
+DEBUG:root:ROW LIMIT: 10000. COLUMNS QUERIED: 4. ROWS RETURNED: 10000. COLUMNS RETURNED: 11 MISSING: 0 rows. -7 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=assignment_group,problem_id,number,location
+

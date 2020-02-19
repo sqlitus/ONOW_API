@@ -50,45 +50,44 @@ def import_merge_clean(files, filetype='excel', start_col='Start', end_col='End'
 class Benchmarking:
     """object for benchmarking script run time"""
 
+    def __init__(self):
+        self.start_time = datetime.now()
+        self.start_time_formatted = self.start_time.strftime('%m/%d/%y %H:%M:%S %p')
+        self.prev_time = None  # instantiates w/ none
+        print('Benchmarking start at:', self.start_time_formatted)
 
-    start_time = datetime.now()
-    start_time_formatted = start_time.strftime('%m/%d/%y %H:%M:%S %p')
-    prev_time = None  # instantiates w/ none
-    print('Start time:', start_time_formatted)
-    elapsed_total = 0  # test for accessing prop
-
-    def elapsed(self, message='', end='no', prev_time=prev_time, start_time=start_time, start_time_formatted=start_time_formatted):
-
+    def elapsed(self, message='', end='no', prev_time=None, start_time=None):
 
         now = datetime.now()
-
+        if prev_time is None:
+            prev_time = self.prev_time
+        if start_time is None:
+            start_time = self.start_time
 
         # CALC: elapsed between prev run and now
-        if prev_time is None:
-            elapsed_time = round((now - self.start_time).total_seconds())
-            print(f'Time since benchmarking start: {elapsed_time} sec')
-        else:
-            elapsed_time = round((now - self.prev_time).total_seconds())
-            print(f'Time since last benchmark: {elapsed_time} sec')
-        self.elapsed_total = round((now - self.start_time).total_seconds())
-
-        if message != '':
-            print(message)
-
+        self.elapsed_total = round((now - start_time).total_seconds())
         if end == 'yes':
-            print('DONE.\nStart time: ', start_time_formatted,
+            print('Start time: ', self.start_time_formatted,
                   '\n', 'Current time: ', now.strftime('%m/%d %H:%M:%S %p'),
                   '\n', 'Total elapsed time: ', self.elapsed_total, ' seconds', sep='')
+        elif prev_time is None:
+            elapsed_time = round((now - start_time).total_seconds())
+            print(f'Time since benchmarking start: {elapsed_time} sec')
+        else:
+            elapsed_time = round((now - prev_time).total_seconds())
+            print(f'Time since last benchmark: {elapsed_time} sec')
 
+        print(message)
         self.prev_time = now
+
 
 # # usage
 # x = Benchmarking()
-# x.start_time
 # x.start_time_formatted
 # x.elapsed()
-# x.elapsed('DONE.')
-
+# x.elapsed(end='yes')
+# x.elapsed('done', end='yes')
+# x.elapsed_total
 
 
 # finding files

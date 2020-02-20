@@ -160,4 +160,14 @@ Solution:
 sysparm_display_value "all" param returns both. likely don't need dot-walk specified fields.
 test no sys_fields, display all.
 > display value, value, and link returned when applicable.
->
+
+ (***API GET calls working in sandbox***)
+
+
+## work on POST (create) requests
+sandbox.
+[create an incident record section](https://docs.servicenow.com/bundle/madrid-application-development/page/integrate/inbound-rest/concept/c_GettingStartedWithREST.html#t_GetStartedCreateInt)
+works with minimal inputs.
+assignment  group - use sys_id? incorrect values ignored, not created.
+few default values assigned, priority, state. 
+assign w/ name works.

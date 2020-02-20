@@ -18,7 +18,7 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
              instance='https://wfmsandbox.service-now.com/api/now/table/',
              table='incident',
              query="priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')",
-             fields='number,assignment_group,problem_id,location,short_description',
+             fields='number,assignment_group,problem_id,location,short_description,sys_created_on'
              ):
 
     benchmark = functions.Benchmarking()

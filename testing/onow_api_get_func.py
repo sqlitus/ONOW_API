@@ -17,7 +17,7 @@ from datetime import datetime
 def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.sandbox['pwd'],
              instance='https://wfmsandbox.service-now.com/api/now/table/',
              table='incident',
-             query="priorityIN2,3,4^sys_created_on>=javascript:gs.beginningOfThisYear()",
+             query="sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4",
              fields='number,assignment_group,problem_id,location,short_description,sys_created_on,priority'
              ):
 
@@ -26,7 +26,7 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
     rowlimit = str(rowlimit)
     offset = str(offset)
     api_calls = 1
-    sysparm_query = "&sysparm_query" + query
+    sysparm_query = "&sysparm_query=" + query
     sysparm_fields = "&sysparm_fields=" + fields
 
     sysparm_exclude_reference_link = "&sysparm_exclude_reference_link=" + "true"

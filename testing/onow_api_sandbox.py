@@ -33,16 +33,17 @@ benchmark = functions.Benchmarking()
 # def onow_api_call(nrows=1, user=config.sandbox['user'], pwd=config.sandbox['pwd']):
 
 # Set the request parameters
-nrows = 129; record_limit = str(nrows)
+nrows = 500; record_limit = str(nrows)
 noffset = 0; offset = str(noffset)
 api_calls = 1
-sysparm_query = "&sysparm_query=priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')^assignment_group.nameLIKEretail"
-sysparm_fields = "&sysparm_fields=" + "assignment_group,problem_id,number,location,location.lattitude,location.longitude"
+sysparm_query = "&sysparm_query=" + "sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')"
+sysparm_fields = "" #+ "&sysparm_fields=" + "assignment_group,problem_id,number,location,location.lattitude,location.longitude"
 sysparm_display_value = "&sysparm_display_value=" + "all"
 url = f'https://wfmsandbox.service-now.com/api/now/table/incident?sysparm_limit={nrows}&sysparm_offset={offset}' + \
       sysparm_query + \
-      sysparm_fields + \
-      sysparm_display_value
+      sysparm_display_value + \
+      sysparm_fields
+
 
 user = config.sandbox['user']
 pwd = config.sandbox['pwd']
@@ -51,6 +52,7 @@ pwd = config.sandbox['pwd']
 headers = {"Content-Type":"application/json","Accept":"application/json"}
 
 # Do the HTTP request
+benchmark.elapsed("making request...")
 response = requests.get(url, auth=(user, pwd), headers=headers)
 
 # Check for HTTP codes other than 200
@@ -59,7 +61,6 @@ if response.status_code != 200:
     exit()
 else:
     print('Response successful')
-    benchmark.elapsed()
 
 # Decode the JSON response into a dictionary and use the data
 print('BEGINNING OF JSON FILE:', response.text[:80], 'END OF JSON FILE:', response.text[-200:], sep='\n')
@@ -75,7 +76,8 @@ print(output_msg)
 # log
 log_api_call_sandbox = 'log_api_call_sandbox.log'
 logging.basicConfig(filename=log_api_call_sandbox, level=logging.DEBUG)
-logging.debug(f'Call at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
+logging.debug(f'Call finished at {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
+logging.debug(f'Total runtime: {benchmark.elapsed_total}')
 logging.debug(output_msg + f'\nsysparm_query = {sysparm_query}' + f'\nsysparm_fields = {sysparm_fields}\n')
 
 # Save data to CSV in relative path
@@ -83,3 +85,4 @@ output_incident = os.path.abspath(os.path.join(definitions.ROOT_DIR, f'.\\test d
                                 f'_runtime{benchmark.elapsed_total}_time{datetime.now().strftime("%H%M%S")}.csv'))
 df.to_csv(output_incident, index=False)
 benchmark.elapsed(f'FINISHED EXPORT TO {output_incident}', end='yes')
+benchmark.elapsed_total

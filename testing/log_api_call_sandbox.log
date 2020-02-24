@@ -135,3 +135,124 @@ DEBUG:root:ROW LIMIT: 10000. COLUMNS QUERIED: 4. ROWS RETURNED: 10000. COLUMNS R
 sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
 sysparm_fields = &sysparm_fields=assignment_group,problem_id,number,location
 
+DEBUG:root:Call at 2020-02-24 12:12:44
+DEBUG:root:ROW LIMIT: 50000. COLUMNS QUERIED: 6. ROWS RETURNED: 50000. COLUMNS RETURNED: 12 MISSING: 0 rows. -6 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=assignment_group,problem_id,number,location,location.lattitude,location.longitude
+
+DEBUG:root:Call finished at 2020-02-24 13:04:30
+INFO:root:Total runtime: 2
+DEBUG:root:ROW LIMIT: 11. COLUMNS QUERIED: 1. ROWS RETURNED: 11. COLUMNS RETURNED: 287 MISSING: 0 rows. -286 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call finished at 2020-02-24 13:09:16
+DEBUG:root:Total runtime: 1
+DEBUG:root:ROW LIMIT: 12. COLUMNS QUERIED: 1. ROWS RETURNED: 12. COLUMNS RETURNED: 287 MISSING: 0 rows. -286 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): wfmsandbox.service-now.com:443
+DEBUG:urllib3.connectionpool:https://wfmsandbox.service-now.com:443 "GET /api/now/table/incident?sysparm_limit=6000&sysparm_offset=0&sysparm_query=sys_created_on%3E=javascript:gs.dateGenerate('2019-01-01','00:00:00')&sysparm_display_value=all HTTP/1.1" 200 None
+DEBUG:root:Call finished at 2020-02-24 13:14:01
+DEBUG:root:Total runtime: 2
+DEBUG:root:ROW LIMIT: 20. COLUMNS QUERIED: 1. ROWS RETURNED: 20. COLUMNS RETURNED: 287 MISSING: 0 rows. -286 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call finished at 2020-02-24 13:21:29
+DEBUG:root:Total runtime: 3
+DEBUG:root:ROW LIMIT: 50. COLUMNS QUERIED: 1. ROWS RETURNED: 50. COLUMNS RETURNED: 287 MISSING: 0 rows. -286 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call finished at 2020-02-24 13:22:01
+DEBUG:root:Total runtime: 12
+DEBUG:root:ROW LIMIT: 400. COLUMNS QUERIED: 1. ROWS RETURNED: 400. COLUMNS RETURNED: 291 MISSING: 0 rows. -290 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call finished at 2020-02-24 13:23:03
+DEBUG:root:Total runtime: 0
+DEBUG:root:ROW LIMIT: 400. COLUMNS QUERIED: 1. ROWS RETURNED: 400. COLUMNS RETURNED: 291 MISSING: 0 rows. -290 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call finished at 2020-02-24 13:24:39
+DEBUG:root:Total runtime: 0
+DEBUG:root:ROW LIMIT: 500. COLUMNS QUERIED: 1. ROWS RETURNED: 500. COLUMNS RETURNED: 292 MISSING: 0 rows. -291 columns.
+sysparm_query = &sysparm_query=sys_created_on>=javascript:gs.dateGenerate('2019-01-01','00:00:00')
+sysparm_fields = 
+
+DEBUG:root:Call at 2020-02-24 15:36:45
+DEBUG:root:ROW LIMIT: 9001. COLUMNS QUERIED: 6. ROWS RETURNED: 9001. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 15:38:26
+DEBUG:root:ROW LIMIT: 10000. COLUMNS QUERIED: 6. ROWS RETURNED: 10000. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 15:40:37
+DEBUG:root:ROW LIMIT: 20000. COLUMNS QUERIED: 6. ROWS RETURNED: 20000. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 15:46:31
+DEBUG:root:ROW LIMIT: 15. COLUMNS QUERIED: 6. ROWS RETURNED: 15. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 15:50:44
+DEBUG:root:ROW LIMIT: 15. COLUMNS QUERIED: 6. ROWS RETURNED: 15. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 15:50:55
+DEBUG:root:ROW LIMIT: 16. COLUMNS QUERIED: 6. ROWS RETURNED: 16. COLUMNS RETURNED: 14 MISSING: 0 rows. -8 columns.
+sysparm_query = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+sysparm_fields = &sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on
+
+DEBUG:root:Call at 2020-02-24 16:29:20
+DEBUG:root:ROW LIMIT: 16. COLUMNS QUERIED: 6. ROWS RETURNED: 16. COLUMNS RETURNED: 12 MISSING: 0 rows. -6 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value
+
+DEBUG:root:Call at 2020-02-24 16:31:08
+DEBUG:root:ROW LIMIT: 20. COLUMNS QUERIED: 6. ROWS RETURNED: 20. COLUMNS RETURNED: 12 MISSING: 0 rows. -6 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value
+
+DEBUG:root:Call at 2020-02-24 16:31:27
+DEBUG:root:ROW LIMIT: 1234. COLUMNS QUERIED: 6. ROWS RETURNED: 1234. COLUMNS RETURNED: 12 MISSING: 0 rows. -6 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value
+
+DEBUG:root:Call at 2020-02-24 16:32:10
+DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 6. ROWS RETURNED: 12345. COLUMNS RETURNED: 12 MISSING: 0 rows. -6 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value
+
+DEBUG:root:Call at 2020-02-24 16:51:49
+DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 7. ROWS RETURNED: 12345. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:root:Call at 2020-02-24 16:59:50
+DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 7. ROWS RETURNED: 12345. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.beginningOfThisYear()
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): wfmsandbox.service-now.com:443
+DEBUG:urllib3.connectionpool:https://wfmsandbox.service-now.com:443 "GET /api/now/table/incident?sysparm_limit=12&sysparm_offset=0&sysparm_querypriorityIN2,3,4%5Esys_created_on%3E=javascript:gs.beginningOfThisYear()&sysparm_fields=number,assignment_group,problem_id,location,short_description,sys_created_on,priority&sysparm_display_value=all&sysparm_exclude_reference_link=true HTTP/1.1" 200 None
+DEBUG:root:Call at 2020-02-24 17:01:56
+DEBUG:root:ROW LIMIT: 12. COLUMNS QUERIED: 7. ROWS RETURNED: 12. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.beginningOfThisYear()
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:root:Call at 2020-02-24 17:11:04
+DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 7. ROWS RETURNED: 12345. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = &sysparm_querypriorityIN2,3,4^sys_created_on>=javascript:gs.beginningOfThisYear()
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+

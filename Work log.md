@@ -91,8 +91,7 @@ https://developer.servicenow.com/app.do#!/rest_api_doc?v=madrid&id=r_TableAPI-GE
 - relying on join via sysparm_query in rest API.
 
 https://community.servicenow.com/community?id=community_question&sys_id=e2790f65db5cdbc01dcaf3231f9619ed
-https://docs.servicenow.com/bundle/newyork-platform-user-interface/page/use/using-lists/concept/c_UseLists.html
-- various parameters. copy query params via list view, breadcrumbs
+- various parameters. copy query params via [list view](https://docs.servicenow.com/bundle/newyork-platform-user-interface/page/use/using-lists/concept/c_UseLists.html), breadcrumbs
 - list view & csv exports show column names
 - assignment_group filters via enumID under the hood.
 
@@ -163,6 +162,11 @@ test no sys_fields, display all.
 
  (***API GET calls working in sandbox***)
 
+noticing cooldown between requests? (nvm, func is fine)
+
+issue: date param from gs func w/ string not being honored `javascript:gs.dateGenerate('2020-01-01','00:00:00')`.
+trying simpler func. `javascript:gs.beginningOfThisYear()`.
+not working either.
 
 ## work on POST (create) requests
 sandbox.

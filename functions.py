@@ -75,7 +75,7 @@ class Benchmarking:
             print(f'Time since benchmarking start: {elapsed_time} sec')
         else:
             elapsed_time = round((now - prev_time).total_seconds())
-            print(f'Time since last benchmark: {elapsed_time} sec')
+            print(f'Total time: {self.elapsed_total} sec. Time since last benchmark: {elapsed_time} sec')
 
         print(message)
         self.prev_time = now

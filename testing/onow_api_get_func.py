@@ -26,8 +26,17 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
     rowlimit = str(rowlimit)
     offset = str(offset)
     api_calls = 1
-    sysparm_query = "&sysparm_query=" + query
-    sysparm_fields = "&sysparm_fields=" + fields
+
+    # pull all if blank string is passed
+    if query == '':
+        sysparm_query = ''
+    else:
+        sysparm_query = "&sysparm_query=" + query
+
+    if fields == '':
+        sysparm_fields = ''
+    else:
+        sysparm_fields = "&sysparm_fields=" + fields
 
     sysparm_exclude_reference_link = "&sysparm_exclude_reference_link=" + "true"
     sysparm_display_value = "&sysparm_display_value=" + "all"

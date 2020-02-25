@@ -266,3 +266,23 @@ DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 7. ROWS RETURNED: 19. COLUMNS RETU
 fields passed = &sysparm_query=sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4
 fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
 
+DEBUG:root:Call at 2020-02-24 17:53:02
+DEBUG:root:ROW LIMIT: 123456. COLUMNS QUERIED: 7. ROWS RETURNED: 19. COLUMNS RETURNED: 14 MISSING: 123437 rows. -7 columns.
+fields passed = &sysparm_query=sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:root:Call at 2020-02-24 17:58:01
+DEBUG:root:ROW LIMIT: 123456. COLUMNS QUERIED: 7. ROWS RETURNED: 19. COLUMNS RETURNED: 14 MISSING: 123437 rows. -7 columns.
+fields passed = &sysparm_query=sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:root:Call at 2020-02-24 17:58:55
+DEBUG:root:ROW LIMIT: 12345. COLUMNS QUERIED: 7. ROWS RETURNED: 12345. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = 
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+
+DEBUG:root:Call at 2020-02-24 18:00:51
+DEBUG:root:ROW LIMIT: 50000. COLUMNS QUERIED: 7. ROWS RETURNED: 50000. COLUMNS RETURNED: 14 MISSING: 0 rows. -7 columns.
+fields passed = 
+fields returned = number.display_value,number.value,short_description.display_value,short_description.value,assignment_group.display_value,assignment_group.value,problem_id.display_value,problem_id.value,sys_created_on.display_value,sys_created_on.value,location.display_value,location.value,priority.display_value,priority.value
+

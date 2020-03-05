@@ -1,4 +1,4 @@
-# onow sandbox api call
+# onow api call get function
 
 '''
 call table, filter, pull data, export
@@ -12,26 +12,28 @@ import definitions
 import functions
 import logging
 from datetime import datetime
+import math
 
 
-def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.sandbox['pwd'],
+def onow_get_loop(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.sandbox['pwd'],
              instance='https://wfmsandbox.service-now.com/api/now/table/',
              table='incident',
              query="sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4",
-             fields='number,assignment_group,problem_id,location,short_description,sys_created_on,priority',
-             display_value='true',
-             exclude_reference_link='true',
+             fields='number,assignment_group,problem_id,location,short_description,sys_created_on,priority'
              ):
 
     benchmark = functions.Benchmarking()
 
+
+
     rowlimit = str(rowlimit)
     offset = str(offset)
-    api_calls = 1
+    api_calls = 0
+    # max_calls = math.ceil(rowlimit / )
 
-    # ignore params if blank string is passed
+    # pull all if blank string is passed
     if query == '':
-        sysparm_query = "&sysparm_query=" + "sys_created_onONLast year@javascript:gs.beginningOfLastYear()@javascript:gs.endOfLastYear()"
+        sysparm_query = ''
     else:
         sysparm_query = "&sysparm_query=" + query
 
@@ -40,8 +42,11 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
     else:
         sysparm_fields = "&sysparm_fields=" + fields
 
-    sysparm_exclude_reference_link = "&sysparm_exclude_reference_link=" + exclude_reference_link
-    sysparm_display_value = "&sysparm_display_value=" + display_value
+    sysparm_exclude_reference_link = "&sysparm_exclude_reference_link=" + "true"
+    sysparm_display_value = "&sysparm_display_value=" + "all"
+
+
+    while api_calls < max_calls
     url = f'{instance}{table}?sysparm_limit={rowlimit}&sysparm_offset={offset}' + \
           sysparm_query + \
           sysparm_fields + \
@@ -85,10 +90,3 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
 
 
 print('loaded function:', 'onow_get')
-
-
-# usage
-'''
-# from testing.onow_api_get_func import onow_get
-# onow_get()
-'''

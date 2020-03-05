@@ -167,6 +167,7 @@ noticing cooldown between requests? (nvm, func is fine)
 issue: date param from gs func w/ string not being honored `javascript:gs.dateGenerate('2020-01-01','00:00:00')`.
 trying simpler func. `javascript:gs.beginningOfThisYear()`.
 not working either. param typo - no "=".
+`sys_created_onONLast year@javascript:gs.beginningOfLastYear()@javascript:gs.endOfLastYear()`
 
 ## work on POST (create) requests
 sandbox.

@@ -15,7 +15,7 @@ from datetime import datetime
 
 
 def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.sandbox['pwd'],
-             instance='https://wfmsandbox.service-now.com/api/now/table/',
+             instance=config.sandbox['inst'],
              table='incident',
              query="sys_created_on>=javascript:gs.beginningOfThisYear()^priorityIN2,3,4",
              fields='number,assignment_group,problem_id,location,short_description,sys_created_on,priority',
@@ -61,8 +61,9 @@ def onow_get(rowlimit=10000, offset=0, user=config.sandbox['user'], pwd=config.s
         benchmark.elapsed()
 
     print('BEGINNING OF JSON FILE:', response.text[:80], 'END OF JSON FILE:', response.text[-200:], sep='\n')
-    data = response.json()
 
+    # Convert from JSON to dataframe
+    data = response.json()
     df = pd.DataFrame.from_dict(pd.json_normalize(data["result"]), orient='columns')
     output_msg = f'ROW LIMIT: {rowlimit}. COLUMNS QUERIED: {len(sysparm_fields.split(","))}. ' \
                  f'ROWS RETURNED: {df.shape[0]}. COLUMNS RETURNED: {df.shape[1]} ' \

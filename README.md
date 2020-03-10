@@ -49,18 +49,5 @@ priorityIN2,3,4^sys_created_on>=javascript:gs.beginningOfThisYear()
 priorityIN2,3,4^sys_created_on>=javascript:gs.dateGenerate('2020-01-01','00:00:00')
 ```
 
-### Reporting Solution Timeline
-Milestones:
-- Q1 - Successfully connected to ONOW Sandbox REST API.
-- Q1 - Validated data pulls. Resolved data discrepancy issues w/ Unisys Integrations team (needed correct permissions).
-
-Current/ongoing:
-- Exploring data structure, API parameters, performance, capabilities.
-
-Next Steps & Estimated deadlines:
-- Q2 - (current obstacle) Need REST API permissions in Prod environment to pull Prod data.
-- Q2 - Need service account(s) created for ETL/reporting use.
-- Q3 - Procure data storage location + host for ETL processes.
-- Q3 - More testing & validating data, performance. configure api calls as necessary. 
-- Q4 - Create custom fields & views for reporting.
-- Q4 - (Finally) connect to data store from Tableau Server, create all manner of reports.
+### todo
+- Research Tableau API, SNOW API, tableau server for best architecture
